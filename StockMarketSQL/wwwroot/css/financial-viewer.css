@@ -1,0 +1,74 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading style */
+#financial-app h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Label style */
+#financial-app label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Dropdown (select) style */
+#financialType {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Loading indicator */
+#loading {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Table styles */
+#financialTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    display: none; /* Initially hidden */
+}
+
+    #financialTable th, #financialTable td {
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+    #financialTable thead tr {
+        background-color: #007bff;
+        color: white;
+        text-align: left;
+    }
+
+    #financialTable tbody tr td {
+        background-color: #f9f9f9;
+    }
+.table-header-cell {
+    padding: 12px;
+    border: 1px solid #ddd;
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+}
+
+.table-cell {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.column-name-cell {
+    background-color: #f9f9f9;
+}

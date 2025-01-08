@@ -1,0 +1,13 @@
+﻿CREATE PROCEDURE GetDateRange10Years
+AS
+SET NOCOUNT ON
+BEGIN
+    ;WITH CTE AS (
+        SELECT GETDATE() Date
+        UNION ALL
+        SELECT DATEADD(MONTH, -2, Date)
+        FROM CTE
+        WHERE Date > DATEADD(YEAR, -10, GETDATE())
+    )
+    SELECT Date FROM CTE
+END

@@ -1,0 +1,8 @@
+﻿CREATE TABLE Documentation.Ratios
+(
+	Id INT IDENTITY NOT NULL PRIMARY KEY,
+	Ratio NVARCHAR(50) NOT NULL,
+	Formula NVARCHAR(100) NOT NULL,
+	Description NVARCHAR(200) NULL
+
+)

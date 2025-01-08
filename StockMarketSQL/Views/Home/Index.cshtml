@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Financial Data Viewer";
+}
+
+@section Scripts {
+    <script src="~/js/financial-viewer.js" asp-append-version="true"></script>
+}
+
+<style>
+    /* General table styling */
+    #financialTable {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    /* Header cells */
+    .table-header-cell {
+        padding: 12px;
+        border: 1px solid #ddd;
+        background-color: #007bff;
+        color: white;
+        text-align: left;
+    }
+
+    /* Data cells */
+    .table-cell {
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+    /* First column (column names) styling */
+    .column-name-cell {
+        background-color: #f9f9f9;
+    }
+
+</style>
+<div id="financial-app">
+    <h1>Financial Data Viewer</h1>
+
+    <label for="financialType">Choose Financial Type:</label>
+    <select id="financialType" class="dropdown">
+        <option value="" disabled selected>Select Financial Type</option>
+        <option value="balancesheet">Balance Sheet</option>
+        <option value="incomestatement">Income Statement</option>
+        <option value="cashflow">Cash Flow</option>
+    </select>
+
+    <div id="loading">Loading data...</div>
+
+    <table id="financialTable">
+        <thead>
+            <tr>
+                <th>Column Name</th>
+                <!-- Dynamic columns for row numbers -->
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+<br />
+
+<div id="financial-app">
+    <h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Financial Data Viewer</h1>
+
+    <!-- Dropdown for selecting financial type -->
+    <label for="financialType" style="font-family: Arial, sans-serif; font-size: 16px;">Choose Financial Type:</label>
+    <select id="financialType" style="padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+        <option value="" disabled selected>Select Financial Type</option>
+        <option value="balancesheet">Balance Sheet</option>
+        <option value="incomestatement">Income Statement</option>
+        <option value="cashflow">Cash Flow</option>
+    </select>
+
+    <!-- Loading indicator -->
+    <div id="loading" style="display: none; font-family: Arial, sans-serif; font-size: 16px; color: #555;">Loading data...</div>
+
+    <!-- Styled table -->
+    <table id="financialTable" style="display: none; width: 100%; margin-top: 20px; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px;">
+        <thead>
+            <tr style="background-color: #007bff; color: white; text-align: left;">
+                <th style="padding: 12px; border: 1px solid #ddd;">Column Name</th>
+                <!-- Dynamic columns for row numbers -->
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+

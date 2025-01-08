@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+
+@{
+    ViewData["Title"] = "Stock History Chart";
+}
+
+<div>
+    <h2>Stock Price History</h2>
+    <canvas id="stockChart" width="800" height="400"></canvas>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const stockId = 135; // Example Stock ID; replace with dynamic value as needed
+            const chartData = await fetchStockHistory(stockId);
+
+            if (chartData) {
+                renderChart(chartData);
+            } else {
+                alert("No data available for the selected stock.");
+            }
+        });
+
+        // Fetch stock history from the backend
+        async function fetchStockHistory(stockId) {
+            try {
+                const response = await fetch(`/Home/GetStockHistory?stockId=${stockId}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch stock history: ${response.statusText}`);
+                }
+                return await response.json();
+            } catch (error) {
+                console.error("Error fetching stock history:", error);
+                return null;
+            }
+        }
+
+        // Render the chart using Chart.js
+        function renderChart(data) {
+            const ctx = document.getElementById("stockChart").getContext("2d");
+
+            // Extract dates and prices from the data
+            const labels = data.map(item => item.Date);
+            const prices = data.map(item => item.AdjClose);
+
+            // Create the chart
+            new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Adjusted Close Price",
+                            data: prices,
+                            borderColor: "rgba(75, 192, 192, 1)",
+                            backgroundColor: "rgba(75, 192, 192, 0.2)",
+                            borderWidth: 2,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Date",
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: "Price",
+                            },
+                        },
+                    },
+                },
+            });
+        }
+    </script>
+}

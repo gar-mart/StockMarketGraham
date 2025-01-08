@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockMarketSQL", "StockMarketSQL\StockMarketSQL.csproj", "{96C42A33-A41C-4BE9-9308-FE49197D693B}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "StockAPI", "StockAPI\StockAPI.pyproj", "{D8CBB5A1-B94C-4E7C-84F9-2427968598F4}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96C42A33-A41C-4BE9-9308-FE49197D693B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C42A33-A41C-4BE9-9308-FE49197D693B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C42A33-A41C-4BE9-9308-FE49197D693B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C42A33-A41C-4BE9-9308-FE49197D693B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CBB5A1-B94C-4E7C-84F9-2427968598F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CBB5A1-B94C-4E7C-84F9-2427968598F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BB83A4-B687-43FA-B655-22B3D0B80BDB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85125ECD-1347-4563-AFFD-F422DA9CBAC4}
+	EndGlobalSection
+EndGlobal

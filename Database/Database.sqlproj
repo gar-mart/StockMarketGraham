@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{d3bb83a4-b687-43fa-b655-22b3d0b80bdb}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="StockMarket" />
+    <Folder Include="StockMarket\Tables" />
+    <Folder Include="StockMarket\Procedures" />
+    <Folder Include="StockMarket\Schemas" />
+    <Folder Include="StockMarket\Functions" />
+    <Folder Include="StockMarket\Types" />
+    <Folder Include="StockMarket\Procedures\CRUD" />
+    <Folder Include="StockMarket\Procedures\Graham" />
+    <Folder Include="Help" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="StockMarket\Tables\Data.StockData.sql" />
+    <Build Include="StockMarket\Tables\Financial.BalanceSheet.sql" />
+    <Build Include="StockMarket\Tables\Financial.CashFlow.sql" />
+    <Build Include="StockMarket\Tables\Financial.EarningsPerShare.sql" />
+    <Build Include="StockMarket\Tables\Financial.IncomeStatement.sql" />
+    <Build Include="StockMarket\Tables\Data.InflationRates.sql" />
+    <Build Include="StockMarket\Tables\Data.MarketHistory.sql" />
+    <Build Include="StockMarket\Schemas\Data.sql" />
+    <Build Include="StockMarket\Schemas\Entity.sql" />
+    <Build Include="StockMarket\Schemas\Financial.sql" />
+    <Build Include="StockMarket\Tables\Stock.sql" />
+    <Build Include="StockMarket\Functions\fxGetIdByTicker.sql" />
+    <Build Include="StockMarket\Types\BalanceSheetTVP.sql" />
+    <Build Include="StockMarket\Types\IncomeStatementTVP.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\InsertIncomeStatement.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\InsertBalanceSheetData.sql" />
+    <Build Include="StockMarket\Schemas\Documentation.sql" />
+    <Build Include="StockMarket\Tables\Ratios.sql" />
+    <Build Include="StockMarket\Types\CashflowTVP.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\InsertCashflow.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\InsertStockOverview.sql" />
+    <Build Include="StockMarket\Tables\Financial.StockOverview.sql" />
+    <Build Include="StockMarket\Types\StockOverviewTVP.sql" />
+    <Build Include="StockMarket\Tables\AnnualEPS.sql" />
+    <Build Include="StockMarket\Tables\QuarterlyEPS.sql" />
+    <Build Include="StockMarket\Types\EPS LOOK INTO.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\GetBalanceSheet.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\GetIncomeStatement.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\GetCashflow.sql" />
+    <Build Include="StockMarket\Procedures\CRUD\GetStockHistory.sql" />
+    <Build Include="StockMarket\Schemas\Graham.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetDateRange10Years.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetAvg10YearStockPrice.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetPERatio.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetDebtToEquityRatio.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetCurrentRatio.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetDividendHistory.sql" />
+    <Build Include="StockMarket\Procedures\Graham\GetNetProfitMargin.sql" />
+    <Build Include="Help\Insert Formulas.sql" />
+  </ItemGroup>
+</Project>
