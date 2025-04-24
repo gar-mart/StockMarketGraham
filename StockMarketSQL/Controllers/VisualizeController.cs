@@ -1,35 +1,61 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Threading.Tasks;
 
 namespace StockMarketSQL.Controllers
 {
-	public class VisualizeController : Controller
-	{
-		public IActionResult Index()
-		{
-			return View();
-		}
+    public class VisualizeController : Controller
+    {
+        private readonly IConfiguration _configuration;
+        private readonly AlphaVantageService _service;
 
+        public VisualizeController(IConfiguration configuration, AlphaVantageService service)
+        {
+            _configuration = configuration;
+            _service = service;
+        }
 
-		public IActionResult Visualize()
-		{
-			List<Person> people = new List<Person> {
-					new Person { Id = 1, Name = "John Doe", Age = 30 },
-					new Person { Id = 2, Name = "Jane Smith", Age = 25 },
-					new Person { Id = 3, Name = "Alice Johnson", Age = 35 },
-					new Person { Id = 4, Name = "Bob Brown", Age = 45 }
-				};
+        public async Task<IActionResult> StockSearch()
+        {
+            string apiKey = _service._apiKey;
+            ViewBag.ApiKey = apiKey;
+            return View();
+        }
 
-			return View(people);
+        public async Task<IActionResult> SearchAndPopulateStockBySymbol(string symbol)
+        {
+            int stockId = GetStockIdBySymbol(symbol);
 
-		}
+            if (stockId == -1)
+            {
+                string stockName = AlphaVantageService.GetStockNameBySymbol(symbol);
+                await CRUDService.InsertNewStock("", symbol, stockName);
+                stockId = GetStockIdBySymbol(symbol);
+            }
 
-		public class Person
-		{
-			public int Id { get; set; }
-			public string Name { get; set; }
-			public int Age { get; set; }
-		}
-	}
+            await CRUDService.PopulateDatabaseForStockAsync("", symbol, stockId, _service);
+            return RedirectToAction("BalanceSheet", new { symbol });
+        }
+
+        public int GetStockIdBySymbol(string symbol)
+        {
+            int stockId = -1;
+            string connectionString = _configuration.GetConnectionString("StockMarketDb");
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT dbo.GetIdByTicker(@symbol)", connection))
+                {
+                    command.Parameters.AddWithValue("@symbol", symbol ?? string.Empty);
+                    object result = command.ExecuteScalar();
+                    stockId = result != DBNull.Value ? Convert.ToInt32(result) : -1;
+                }
+            }
+
+            return stockId;
+        }
+    }
 }
-
-
